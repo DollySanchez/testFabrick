@@ -12,7 +12,7 @@ public class ThreeOpService {
 
     private final RestTemplate restTemplate;
     private final HttpHeaders headers;
-    //private HttpEntity request;
+    private HttpEntity request;
 
 
 
@@ -22,7 +22,7 @@ public class ThreeOpService {
         //this.request = request;
         headers.add("Auth-Schema","S2S");
         headers.add("Api-Key","FXOVVXXHVCPVPBZXIJOBGUGSKHDNFRRQJP");
-        //request = new HttpEntity(headers);
+        request = new HttpEntity(headers);
     }
 
     public ResponseEntity<?> letturaSaldo(String accountId){
@@ -40,7 +40,7 @@ public class ThreeOpService {
         //headers.add("Api-Key","FXOVVXXHVCPVPBZXIJOBGUGSKHDNFRRQJP");
 
         //build the request
-        HttpEntity request = new HttpEntity(headers);
+        //HttpEntity request = new HttpEntity(headers);
 
         //make an HTTP GET request with headers
         ResponseEntity<?> response = restTemplate.exchange(
