@@ -36,6 +36,14 @@ public class Controller {
 
     }
 
+    @GetMapping(value="/transazioni")
+    public ResponseEntity<?> transazioni(@RequestParam(value="accountId") String accountId,
+                                        @RequestBody Map<String,String> map){
+
+        return threeOpService.transazioni(accountId,map);
+
+    }
+
 
 
 

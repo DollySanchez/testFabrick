@@ -10,6 +10,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.Map;
+
 
 @Service
 @Slf4j
@@ -58,14 +60,24 @@ public class ThreeOpService {
             ResponseEntity<?> response = restTemplate.postForEntity(url, newRequest, Bonifico.class, accountId);
             return response;
         }catch (RuntimeException e){
-            logger.info("exception!");
+            logger.error("exception!");
             throw new BadRequestException("error!!!");
         }
+    }
 
+    public ResponseEntity<?> transazioni (String accountId, Map<String,String> map){
+        String url = "https://sandbox.platfr.io/api/gbs/banking/v4.0/accounts/{accountId}/transactions?fromAccountingDate={query}&toAccountingDate={query2}";
 
-
-
-
+        ResponseEntity<?> response = restTemplate.exchange(
+                url,
+                HttpMethod.GET,
+                request,
+                String.class,
+                accountId,
+                map.get("fromAccountingDate"),
+                map.get("toAccountingDate")
+        );
+        return response;
     }
 
 
