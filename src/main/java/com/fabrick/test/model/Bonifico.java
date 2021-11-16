@@ -1,30 +1,32 @@
 package com.fabrick.test.model;
 
-public class Bonifico {
-    private Long accountId;
-    private String receiverName;
+import java.io.Serializable;
+
+
+public class Bonifico implements Serializable {
+    private Creditor creditor;
+    private String executionDate;
     private String description;
+    private String amount;
     private String currency;
-    public String amount;
-    public String executionDate;
 
     public Bonifico() {
     }
 
-    public Long getAccountId() {
-        return accountId;
+    public Creditor getCreditor() {
+        return creditor;
     }
 
-    public void setAccountId(Long accountId) {
-        this.accountId = accountId;
+    public void setCreditor(Creditor creditor) {
+        this.creditor = creditor;
     }
 
-    public String getReceiverName() {
-        return receiverName;
+    public String getExecutionDate() {
+        return executionDate;
     }
 
-    public void setReceiverName(String receiverName) {
-        this.receiverName = receiverName;
+    public void setExecutionDate(String executionDate) {
+        this.executionDate = executionDate;
     }
 
     public String getDescription() {
@@ -35,14 +37,6 @@ public class Bonifico {
         this.description = description;
     }
 
-    public String getCurrency() {
-        return currency;
-    }
-
-    public void setCurrency(String currency) {
-        this.currency = currency;
-    }
-
     public String getAmount() {
         return amount;
     }
@@ -51,11 +45,11 @@ public class Bonifico {
         this.amount = amount;
     }
 
-    public String getExecutionDate() {
-        return executionDate;
+    public String getCurrency() {
+        return currency;
     }
 
-    public void setExecutionDate(String executionDate) {
-        this.executionDate = executionDate;
+    public void setCurrency(String currency) {
+        this.currency = currency;
     }
 }
